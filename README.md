@@ -50,7 +50,49 @@ model = AutoModelForCausalLM.from_pretrained(
     device_map="auto"
 )
 tokenizer = AutoTokenizer.from_pretrained("gamithasam/notion-qwen2.5-1.5B")
+
+# Create pipeline
+pipe = pipeline(
+    "text-generation",
+    model=model,
+    tokenizer=tokenizer,
+    torch_dtype=torch.float16,
+    device_map="auto"
+)
+
+# Example prompt
+prompt = """<|im_start|>user
+Generate me a Notion template for tracking my daily tasks and habits.
+<|im_end|>
+<|im_start|>assistant
+"""
+
+result = pipe(
+    prompt,
+    max_new_tokens=1000,
+    do_sample=True,
+    temperature=0.7,
+    top_p=0.9,
+    pad_token_id=tokenizer.eos_token_id
+)
 ```
+
+## Limitations
+
+- The model requires specific formatting with `<|im_start|>` and `<|im_end|>` tokens
+- Generated JSON should be validated before use in production
+- May require adjustments for very complex template structures
+- Performance depends on available GPU memory
+- Training dataset size was limited to 41 examples
+
+## Intended Uses
+
+This model is designed for:
+- Generating structured Notion templates
+- Creating documentation layouts
+- Organizing information in a hierarchical format
+- Planning project structures
+- Creating knowledge bases
 
 ## Links
 
