@@ -6,6 +6,11 @@ This repository contains the training notebook for fine-tuning Qwen2.5-1.5B-Inst
 
 - `finetune_qwen2_5_1_5B.ipynb`: Jupyter notebook containing the complete fine-tuning process
 
+## Training Data
+
+The model was fine-tuned using the dataset from [sbhatti2009/NotionGPT](https://huggingface.co/spaces/sbhatti2009/NotionGPT). The training data can be found at:
+- [Download training data](https://huggingface.co/spaces/sbhatti2009/NotionGPT/resolve/main/data/finetuning_data_cot_v12.jsonl)
+
 ## Model Description
 
 The fine-tuned model specializes in generating structured Notion templates, understanding and generating complex JSON blueprints that represent detailed, organized, and highly functional Notion templates.
@@ -51,6 +56,7 @@ tokenizer = AutoTokenizer.from_pretrained("gamithasam/notion-qwen2.5-1.5B")
 
 - Fine-tuned model: [gamithasam/notion-qwen2.5-1.5B](https://huggingface.co/gamithasam/notion-qwen2.5-1.5B)
 - Base model: [Qwen/Qwen2.5-1.5B-Instruct](https://huggingface.co/Qwen/Qwen2.5-1.5B-Instruct)
+- Training data source: [sbhatti2009/NotionGPT](https://huggingface.co/spaces/sbhatti2009/NotionGPT)
 
 ## License
 
